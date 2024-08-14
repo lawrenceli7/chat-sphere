@@ -6,10 +6,11 @@ export type ConversationType = {
   profilePic: string;
 };
 
-type MessageType = {
+export type MessageType = {
   id: string;
   body: string;
   senderId: string;
+  createdAt: string;
 };
 
 interface ConversationState {
