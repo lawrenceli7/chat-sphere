@@ -1,18 +1,49 @@
-import { Search } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { FiSearch } from "react-icons/fi";
+import useGetConversations from "../../hooks/useConversations";
+import useConversation, {
+  ConversationType,
+} from "../../zustand/useConversation";
 
 const SearchInput = () => {
+  const [search, setSearch] = useState("");
+  const { setSelectedConversation } = useConversation();
+  const { conversations } = useGetConversations();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!search) return;
+
+    if (search.length < 3) {
+      return toast.error("Search term must be at least 3 characters long");
+    }
+
+    const conversation = conversations.find((c: ConversationType) =>
+      c.fullName.toLowerCase().includes(search.toLowerCase())
+    );
+
+    if (conversation) {
+      setSelectedConversation(conversation);
+      setSearch("");
+    } else toast.error("No such user found!");
+  };
+
   return (
-    <form className="flex items-center gap-2">
+    <form className="flex items-center gap-2" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Search…"
-        className="input-sm md:input input-bordered rounded-full sm:rounded-full w-full"
+        className="w-full rounded-full input-sm md:input input-bordered sm:rounded-full"
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
       />
       <button
         type="submit"
-        className="btn md:btn-md btn-sm btn-circle bg-sky-500 text-white  "
+        className="text-white btn md:btn-md btn-sm btn-circle bg-sky-500 "
       >
-        <Search className="w-4 h-4 md:w-6 md:h-6 outline-none" />
+        <FiSearch className="w-4 h-4 outline-none md:w-6 md:h-6" />
       </button>
     </form>
   );
