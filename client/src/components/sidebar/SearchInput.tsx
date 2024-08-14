@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { FiSearch } from "react-icons/fi";
 
 const SearchInput = () => {
   return (
@@ -6,13 +6,13 @@ const SearchInput = () => {
       <input
         type="text"
         placeholder="Search…"
-        className="input-sm md:input input-bordered rounded-full sm:rounded-full w-full"
+        className="w-full rounded-full input-sm md:input input-bordered sm:rounded-full"
       />
       <button
         type="submit"
-        className="btn md:btn-md btn-sm btn-circle bg-sky-500 text-white  "
+        className="text-white btn md:btn-md btn-sm btn-circle bg-sky-500 "
       >
-        <Search className="w-4 h-4 md:w-6 md:h-6 outline-none" />
+        <FiSearch className="w-4 h-4 outline-none md:w-6 md:h-6" />
       </button>
     </form>
   );

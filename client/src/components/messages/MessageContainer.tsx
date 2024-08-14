@@ -1,4 +1,5 @@
-import { MessageCircle } from "lucide-react";
+import { PiHandWavingBold } from "react-icons/pi";
+import { SiImessage } from "react-icons/si";
 import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
 import MessageInput from "./MessageInput";
@@ -33,9 +34,11 @@ const NoChatSelected = () => {
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div className="flex flex-col items-center gap-2 px-4 font-semibold text-center text-gray-200 sm:text-lg md:text-xl">
-        <p>Welcome 👋 {authUser?.fullName} ❄</p>
+        <p className="flex items-center gap-2">
+          Welcome <PiHandWavingBold /> {authUser?.fullName}
+        </p>
         <p>Select a chat to start messaging</p>
-        <MessageCircle className="text-3xl text-center md:text-6xl" />
+        <SiImessage className="text-3xl text-center md:text-4xl" />
       </div>
     </div>
   );
