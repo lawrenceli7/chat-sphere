@@ -35,13 +35,13 @@ const SearchInput = () => {
       <input
         type="text"
         placeholder="Search…"
-        className="w-full rounded-full input-sm md:input input-bordered sm:rounded-full"
+        className="w-full rounded-full input-sm md:input input-bordered sm:rounded-full bg-slate-800"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
       <button
         type="submit"
-        className="text-white btn md:btn-md btn-sm btn-circle bg-sky-500 "
+        className="text-white bg-blue-500 btn md:btn-md btn-sm btn-circle hover:bg-sky-500"
       >
         <FiSearch className="w-4 h-4 outline-none md:w-6 md:h-6" />
       </button>

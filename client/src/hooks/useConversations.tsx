@@ -9,6 +9,7 @@ const useConversations = () => {
   useEffect(() => {
     const getConversations = async () => {
       setLoading(true);
+
       try {
         const res = await fetch("/api/messages/conversations");
         const data = await res.json();

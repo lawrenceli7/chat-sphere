@@ -19,8 +19,8 @@ const Conversation = ({
   return (
     <>
       <div
-        className={`flex items-center gap-2 p-2 py-1 rounded cursor-pointer hover:bg-sky-500 ${
-          isSelected ? "bg-sky-500" : ""
+        className={`flex items-center gap-2 p-2 py-1 cursor-pointer hover:bg-sky-500 rounded-lg ${
+          isSelected ? "bg-blue-500" : ""
         }`}
         onClick={() => setSelectedConversation(conversation)}
       >
@@ -29,7 +29,6 @@ const Conversation = ({
             <img src={conversation.profilePic} alt="user avatar" />
           </div>
         </div>
-
         <div className="flex flex-col flex-1">
           <div className="flex justify-between gap-3">
             <p className="text-sm font-bold text-gray-200 md:text-md">
@@ -39,7 +38,6 @@ const Conversation = ({
           </div>
         </div>
       </div>
-
       <div className="h-1 py-0 my-0 divider" />
     </>
   );

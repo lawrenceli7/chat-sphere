@@ -4,7 +4,6 @@ import useSendMessage from "../../hooks/useSend";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
-
   const { loading, sendMessage } = useSendMessage();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

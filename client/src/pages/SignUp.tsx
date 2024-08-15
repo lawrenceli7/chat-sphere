@@ -4,7 +4,7 @@ import { HiUser, HiUserCircle } from "react-icons/hi";
 import { MdOutlineLogout } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import GenderCheckbox from "../components/GenderCheckbox";
+import GenderCheckbox from "../components/checkbox";
 import useSignup from "../hooks/useSignup";
 
 const SignUp = () => {
