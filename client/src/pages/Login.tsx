@@ -1,3 +1,4 @@
+import { Spinner } from "flowbite-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
@@ -16,7 +17,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center mx-auto min-w-96">
-      <div className="w-full p-6 bg-gray-400 bg-opacity-0 rounded-lg shadow-md bg-clip-padding backdrop-filter backdrop-blur-lg">
+      <div className="w-full p-6 bg-gray-800 rounded-lg shadow-md ">
         <h1 className="text-3xl font-semibold text-center text-white">
           Login
           <span className="text-blue-500"> ChatSphere</span>
@@ -61,7 +62,18 @@ const Login = () => {
 
           <div>
             <button className="mt-2 btn btn-block btn-sm" disabled={loading}>
-              {loading ? "Loading..." : "Login"}
+              {loading ? (
+                <>
+                  <Spinner
+                    className="mr-2"
+                    size="sm"
+                    aria-label="Logout loading spinner"
+                  />
+                  <span>"Loading..." </span>
+                </>
+              ) : (
+                "Login"
+              )}
             </button>
           </div>
         </form>

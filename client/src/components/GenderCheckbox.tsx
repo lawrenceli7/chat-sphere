@@ -1,3 +1,5 @@
+import { IoMdFemale, IoMdMale } from "react-icons/io";
+
 const GenderCheckbox = ({
   selectedGender,
   onCheckboxChange,
@@ -6,9 +8,10 @@ const GenderCheckbox = ({
   onCheckboxChange: (gender: "male" | "female") => void;
 }) => {
   return (
-    <div className="flex">
+    <div className="flex justify-center">
       <div className="form-control">
         <label className={`label gap-2 cursor-pointer`}>
+          <IoMdMale className="w-6 h-6 text-white" />
           <span className="label-text">Male</span>
           <input
             type="checkbox"
@@ -20,6 +23,7 @@ const GenderCheckbox = ({
       </div>
       <div className="form-control">
         <label className={`label gap-2 cursor-pointer`}>
+          <IoMdFemale className="w-6 h-6 text-white" />
           <span className="label-text">Female</span>
           <input
             type="checkbox"
