@@ -13,5 +13,5 @@
     "esm": true
   },
   "include": ["./src/**/*"], // Specifies which files to include when compiling your project.
-  "exclude": ["node_modules", "**/*.spec.ts", "../client"] // Specifies which files to exclude when compiling your project.
+  "exclude": ["node_modules"] // Specifies which files to exclude when compiling your project.
 }
