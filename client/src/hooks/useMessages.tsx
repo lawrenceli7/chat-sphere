@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import API_URL from "../config";
 import useConversation from "../zustand/useConversation";
 
 const useMessages = () => {
@@ -14,7 +15,9 @@ const useMessages = () => {
       setMessages([]);
 
       try {
-        const res = await fetch(`/api/messages/${selectedConversation.id}`);
+        const res = await fetch(
+          `${API_URL}/api/messages/${selectedConversation.id}`
+        );
         const data = await res.json();
 
         if (!res.ok) throw new Error(data.error || "An error occurred");

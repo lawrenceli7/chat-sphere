@@ -4,11 +4,5 @@ import { defineConfig } from "vite";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://chat-sphere-backend-hw7c.onrender.com",
-      },
-    },
-  },
+  base: "./",
 });

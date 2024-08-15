@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import API_URL from "../config";
 import { ConversationType } from "../zustand/useConversation";
 
 const useConversations = () => {
@@ -10,7 +11,7 @@ const useConversations = () => {
     const getConversations = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/messages/conversations");
+        const res = await fetch(`${API_URL}/api/messages/conversations`);
         const data = await res.json();
 
         if (data.error) {
