@@ -1,4 +1,5 @@
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import authRoutes from "./routes/auth.router.js";
@@ -8,8 +9,6 @@ import { app, server } from "./socket/socket.js";
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
-const cors = require("cors");
-
 const corsOptions = {
   origin: "https://chat-sphere-096v.onrender.com",
   methods: ["GET", "POST", "PUT", "DELETE"],
