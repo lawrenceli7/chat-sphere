@@ -19,8 +19,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center mx-auto rounded-lg shadow-sm min-w-1/3 shadow-white">
-      <div className="w-full p-6 bg-gray-800 rounded-lg shadow-md ">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md p-6 bg-gray-800 rounded-lg shadow-md">
         <h1 className="mb-6 text-3xl font-semibold text-center text-white">
           Login
           <span className="text-blue-500"> ChatSphere</span>
@@ -31,7 +31,7 @@ const Login = () => {
             <span>:</span>
             <FloatingLabel
               label="Username"
-              className="text-gray-400 min-w-96"
+              className="text-gray-400 w-72"
               helperText="Enter your username"
               variant="standard"
               sizing="md"
@@ -47,7 +47,7 @@ const Login = () => {
             <span>:</span>
             <FloatingLabel
               label="Password"
-              className="text-gray-400 min-w-96"
+              className="text-gray-400 w-72"
               helperText="Enter your password"
               variant="standard"
               sizing="md"
