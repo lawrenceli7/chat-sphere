@@ -8,7 +8,6 @@ import {
   useState,
 } from "react";
 import toast from "react-hot-toast";
-import API_URL from "../config";
 
 type AuthUserType = {
   id: string;
@@ -40,7 +39,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const fetchAuthUser = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/auth/me`);
+        const res = await fetch("/api/auth/me");
         const data = await res.json();
 
         if (!res.ok) {
