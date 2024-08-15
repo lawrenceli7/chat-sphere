@@ -41,9 +41,8 @@ In another new terminal window, navigate to the `client` folder, and run `npm in
 - **Hosting:** Frontend and Backend deployed on Render
 
 ## Directory Structure
-
 - `/client`: Holds all client-side code
-- `/server`: Contains all server-side code
+- `/server`: Holds all server-side code
 
 ## Deployed on Render
 - https://chat-sphere-xky9.onrender.com
