@@ -3,13 +3,7 @@ import useConversation, {
   ConversationType,
 } from "../../zustand/useConversation";
 
-const Conversation = ({
-  conversation,
-  emoji,
-}: {
-  conversation: ConversationType;
-  emoji: string;
-}) => {
+const Conversation = ({ conversation }: { conversation: ConversationType }) => {
   const { setSelectedConversation, selectedConversation } = useConversation();
   const { onlineUsers } = useSocketContext();
 
@@ -34,7 +28,6 @@ const Conversation = ({
             <p className="text-sm font-bold text-gray-200 md:text-md">
               {conversation.fullName}
             </p>
-            <span className="hidden text-xl md:inline-block">{emoji}</span>
           </div>
         </div>
       </div>

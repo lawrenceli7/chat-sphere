@@ -1,4 +1,3 @@
-// import { DUMMY_MESSAGES } from "../../data/dummy";
 import useListenMessages from "../../hooks/useListen";
 import useMessages from "../../hooks/useMessages";
 import useChatScroll from "../../hooks/useScroll";
@@ -21,7 +20,7 @@ const Messages = () => {
 
       {!loading && messages.length === 0 && (
         <p className="text-center text-white">
-          Send a message to start the conversation
+          Send a message to start the conversation.
         </p>
       )}
     </div>

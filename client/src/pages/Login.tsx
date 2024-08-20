@@ -79,7 +79,7 @@ const Login = () => {
                     size="sm"
                     aria-label="Logout loading spinner"
                   />
-                  <span>"Loading..." </span>
+                  <span>Loading...</span>
                 </>
               ) : (
                 <div className="flex items-center gap-2">
