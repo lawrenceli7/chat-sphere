@@ -2,11 +2,13 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import express from "express";
 import path from "path";
+import job from "./cron.js";
 import authRoutes from "./routes/auth.router.js";
 import messageRoutes from "./routes/message.router.js";
 import { app, server } from "./socket/socket.js";
 
 dotenv.config();
+job.start();
 
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();

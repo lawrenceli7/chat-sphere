@@ -1,3 +1,4 @@
+import { Label, Radio } from "flowbite-react";
 import { IoMdFemale, IoMdMale } from "react-icons/io";
 
 const GenderCheckbox = ({
@@ -8,31 +9,34 @@ const GenderCheckbox = ({
   onCheckboxChange: (gender: "male" | "female") => void;
 }) => {
   return (
-    <div className="flex justify-center">
-      <div className="form-control">
-        <label className={`label gap-2 cursor-pointer`}>
-          <IoMdMale className="w-6 h-6 text-white" />
-          <span className="label-text">Male</span>
-          <input
-            type="checkbox"
-            className="checkbox border-slate-900"
-            checked={selectedGender === "male"}
-            onChange={() => onCheckboxChange("male")}
-          />
-        </label>
-      </div>
-      <div className="form-control">
-        <label className={`label gap-2 cursor-pointer`}>
-          <IoMdFemale className="w-6 h-6 text-white" />
-          <span className="label-text">Female</span>
-          <input
-            type="checkbox"
-            className="checkbox border-slate-900"
-            checked={selectedGender === "female"}
-            onChange={() => onCheckboxChange("female")}
-          />
-        </label>
-      </div>
+    <div className="flex items-center justify-center gap-6">
+      <Label className="flex items-center gap-2 cursor-pointer" htmlFor="male">
+        <IoMdMale className="w-6 h-6 text-white" />
+        <span className="text-white">Male</span>
+        <Radio
+          id="male"
+          name="male"
+          value="Male"
+          className="border-slate-900"
+          checked={selectedGender === "male"}
+          onChange={() => onCheckboxChange("male")}
+        />
+      </Label>
+      <Label
+        className="flex items-center gap-2 cursor-pointer"
+        htmlFor="female"
+      >
+        <IoMdFemale className="w-6 h-6 text-white" />
+        <span className="text-white">Female</span>
+        <Radio
+          id="female"
+          name="female"
+          value="Female"
+          className="border-slate-900"
+          checked={selectedGender === "female"}
+          onChange={() => onCheckboxChange("female")}
+        />
+      </Label>
     </div>
   );
 };
