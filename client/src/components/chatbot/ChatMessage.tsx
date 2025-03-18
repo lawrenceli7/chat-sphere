@@ -1,0 +1,27 @@
+import ChatbotIcon from "./ChatbotIcon";
+
+interface Chat {
+  role: string;
+  text: string;
+}
+
+const ChatMessage = ({ chat }: { chat: Chat }) => {
+  return (
+    <div
+      className={`flex items-center ${
+        chat.role === "model" ? "justify-start" : "justify-end"
+      }`}
+    >
+      {chat.role === "model" && <ChatbotIcon />}
+      <p
+        className={`max-w-xs p-3 text-sm rounded-lg ${
+          chat.role === "model" ? "bg-purple-100" : "bg-purple-700 text-white"
+        }`}
+      >
+        {chat.text}
+      </p>
+    </div>
+  );
+};
+
+export default ChatMessage;
