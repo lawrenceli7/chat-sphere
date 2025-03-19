@@ -52,7 +52,7 @@ const ChatForm: React.FC<ChatFormProps> = ({
         ref={inputRef}
         type="text"
         placeholder="Message..."
-        className="w-full h-12 px-4 text-sm bg-transparent border-none outline-none focus:outline-none focus:ring-0 focus:border-transparent"
+        className="w-full h-2 px-4 text-sm bg-transparent border-none outline-none focus:outline-none focus:ring-0 focus:border-transparent"
         required
       />
       <button

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import ChatbotIcon from "./ChatbotIcon";
 import ChatForm from "./ChatForm";
@@ -8,10 +8,54 @@ const Chatbot = () => {
   const [chatHistory, setChatHistory] = useState<
     { role: string; text: string }[]
   >([]);
+  const chatBodyRef = useRef<HTMLDivElement | null>(null);
 
-  const generateBotResponse = (history: any[]) => {
-    console.log(history);
+  const generateBotResponse = async (history: any[]) => {
+    const updateHistory = (text: string) => {
+      setChatHistory((prev) => [
+        ...prev.filter((msg) => msg.text !== "Thinking..."),
+        { role: "model", text },
+      ]);
+    };
+
+    history = history.map(({ role, text }) => ({ role, parts: [{ text }] }));
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        contents: history,
+      }),
+    };
+
+    try {
+      const response = await fetch(
+        import.meta.env.VITE_API_URL,
+        requestOptions
+      );
+      const data = await response.json();
+
+      if (!response.ok)
+        throw new Error(data.error.message || "Something went wrong");
+
+      const apiResponseText = data.candidates[0].content.parts[0].text
+        .replace(/\*\*(.*?)\*\*/g, "$1")
+        .trim();
+
+      updateHistory(apiResponseText);
+    } catch (error: any) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    chatBodyRef.current?.scrollTo({
+      top: chatBodyRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [chatHistory]);
 
   return (
     <div className="flex items-center justify-center w-full min-h-screen bg-gradient-to-b from-blue-100 to-blue-300">
@@ -28,7 +72,10 @@ const Chatbot = () => {
         </div>
 
         {/* Chatbot body */}
-        <div className="flex flex-col gap-5 px-6 py-6 overflow-y-auto h-96">
+        <div
+          ref={chatBodyRef}
+          className="flex flex-col gap-5 px-6 py-6 overflow-y-auto h-96"
+        >
           <div className="flex items-center gap-2">
             <ChatbotIcon />
             <p className="max-w-xs p-3 text-sm bg-purple-100 rounded-lg">
@@ -42,7 +89,7 @@ const Chatbot = () => {
         </div>
 
         {/* Chatbot footer */}
-        <div className="absolute bottom-0 w-full p-4 bg-white">
+        <div className="bottom-0 w-full p-4 bg-white">
           <ChatForm
             chatHistory={chatHistory}
             setChatHistory={setChatHistory}
