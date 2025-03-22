@@ -1,54 +1,60 @@
+// Define the Prisma client generator
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client-js" // Use Prisma Client for database access
 }
 
+// Define the database connection
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "postgresql" // Use PostgreSQL as the database provider
+  url      = env("DATABASE_URL") // Database connection URL from environment variables
 }
 
+// User model definition
 model User {
-  id               String   @id @default(cuid())
-  username         String   @unique
-  fullName         String
-  password         String
-  gender           Gender
-  profilePic       String
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  conversationsIds String[]
+  id               String   @id @default(cuid()) // Unique identifier with a default cuid
+  username         String   @unique // Unique username
+  fullName         String // Full name of the user
+  password         String // User's password
+  gender           Gender // Enum for gender (male or female)
+  profilePic       String // URL for the user's profile picture
+  createdAt        DateTime @default(now()) // Timestamp for when the user was created
+  updatedAt        DateTime @updatedAt // Timestamp for when the user was last updated
+  conversationsIds String[] // Array of conversation IDs the user is part of
 
-  consersations Conversation[]
-  messages      Message[]
+  conservations Conversation[] // Relation to the Conversation model
+  messages      Message[] // Relation to the Message model
 }
 
+// Conversation model definition
 model Conversation {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String   @id @default(cuid()) // Unique identifier with a default cuid
+  createdAt DateTime @default(now()) // Timestamp for when the conversation was created
+  updatedAt DateTime @updatedAt // Timestamp for when the conversation was last updated
 
-  participantIds String[]
-  participants   User[]
+  participantIds String[] // Array of participant IDs
+  participants   User[] // Relation to the User model
 
-  messageIds String[]
-  messages   Message[]
+  messageIds String[] // Array of message IDs
+  messages   Message[] // Relation to the Message model
 }
 
+// Message model definition
 model Message {
-  id String @id @default(cuid())
+  id String @id @default(cuid()) // Unique identifier with a default cuid
 
-  conversationId String
-  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  conversationId String // Foreign key for the conversation
+  conversation   Conversation @relation(fields: [conversationId], references: [id]) // Relation to the Conversation model
 
-  senderId String
-  sender   User   @relation(fields: [senderId], references: [id])
+  senderId String // Foreign key for the sender
+  sender   User   @relation(fields: [senderId], references: [id]) // Relation to the User model
 
-  body      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  body      String // Content of the message
+  createdAt DateTime @default(now()) // Timestamp for when the message was created
+  updatedAt DateTime @updatedAt // Timestamp for when the message was last updated
 }
 
+// Enum for gender
 enum Gender {
-  male
-  female
+  male // Male gender
+  female // Female gender
 }

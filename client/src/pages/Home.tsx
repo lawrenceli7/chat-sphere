@@ -4,9 +4,12 @@ import Sidebar from "../components/sidebar";
 const Home = () => {
   return (
     <div className="flex h-[80vh] w-full md:max-w-screen-md md:h-[550px] rounded-lg overflow-hidden bg-slate-600 shadow-md shadow-white">
+      {/* Sidebar for navigation and conversations */}
       <Sidebar />
+      {/* Main container for displaying messages */}
       <MessageContainer />
     </div>
   );
 };
+
 export default Home;

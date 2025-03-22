@@ -9,32 +9,38 @@ import useSignup from "../hooks/useSignup";
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
-    fullName: "",
-    username: "",
-    password: "",
-    confirmPassword: "",
-    gender: "",
+    fullName: "", // State for the full name input
+    username: "", // State for the username input
+    password: "", // State for the password input
+    confirmPassword: "", // State for the confirm password input
+    gender: "", // State for the gender selection
   });
-  const { loading, signup } = useSignup();
+  const { loading, signup } = useSignup(); // Access the signup function and loading state from the custom hook
 
+  // Handle gender checkbox change
   const handleCheckboxChange = (gender: "male" | "female") => {
-    setInputs({ ...inputs, gender });
+    setInputs({ ...inputs, gender }); // Update the gender state
   };
 
+  // Handle form submission
   const handleSubmitForm = (event: React.FormEvent) => {
-    event.preventDefault();
-    signup(inputs);
+    event.preventDefault(); // Prevent default form submission behavior
+    signup(inputs); // Call the signup function with the input values
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+      {/* Signup form container */}
       <div className="w-full max-w-md p-6 bg-gray-800 rounded-lg shadow-md">
+        {/* Title */}
         <h1 className="mb-6 text-3xl font-semibold text-center text-white">
           Sign Up <span className="text-blue-500"> ChatSphere</span>
         </h1>
+        {/* Signup form */}
         <form onSubmit={handleSubmitForm} className="space-y-4">
+          {/* Full Name input */}
           <div className="flex items-center justify-center gap-2">
-            <HiUser className="w-6 h-6 text-white" />
+            <HiUser className="w-6 h-6 text-white" /> {/* Full Name icon */}
             <span>:</span>
             <FloatingLabel
               label="Full Name"
@@ -42,15 +48,18 @@ const SignUp = () => {
               helperText="Enter your full name"
               variant="standard"
               sizing="md"
-              value={inputs.fullName}
-              onChange={(event) =>
-                setInputs({ ...inputs, fullName: event.target.value })
+              value={inputs.fullName} // Bind the input value to the state
+              onChange={
+                (event) =>
+                  setInputs({ ...inputs, fullName: event.target.value }) // Update the full name state on input change
               }
               type="text"
             />
           </div>
+          {/* Username input */}
           <div className="flex items-center justify-center gap-2">
-            <HiUserCircle className="w-6 h-6 text-white" />
+            <HiUserCircle className="w-6 h-6 text-white" />{" "}
+            {/* Username icon */}
             <span>:</span>
             <FloatingLabel
               label="Username"
@@ -59,14 +68,17 @@ const SignUp = () => {
               variant="standard"
               sizing="md"
               type="text"
-              value={inputs.username}
-              onChange={(event) =>
-                setInputs({ ...inputs, username: event.target.value })
+              value={inputs.username} // Bind the input value to the state
+              onChange={
+                (event) =>
+                  setInputs({ ...inputs, username: event.target.value }) // Update the username state on input change
               }
             />
           </div>
+          {/* Password input */}
           <div className="flex items-center justify-center gap-2">
-            <RiLockPasswordFill className="w-6 h-6 text-white" />
+            <RiLockPasswordFill className="w-6 h-6 text-white" />{" "}
+            {/* Password icon */}
             <span>:</span>
             <FloatingLabel
               label="Password"
@@ -75,14 +87,17 @@ const SignUp = () => {
               variant="standard"
               sizing="md"
               type="password"
-              value={inputs.password}
-              onChange={(event) =>
-                setInputs({ ...inputs, password: event.target.value })
+              value={inputs.password} // Bind the input value to the state
+              onChange={
+                (event) =>
+                  setInputs({ ...inputs, password: event.target.value }) // Update the password state on input change
               }
             />
           </div>
+          {/* Confirm Password input */}
           <div className="flex items-center justify-center gap-2">
-            <RiLockPasswordFill className="w-6 h-6 text-white" />
+            <RiLockPasswordFill className="w-6 h-6 text-white" />{" "}
+            {/* Confirm Password icon */}
             <span>:</span>
             <FloatingLabel
               label="Confirm Password"
@@ -91,34 +106,38 @@ const SignUp = () => {
               variant="standard"
               sizing="md"
               type="password"
-              value={inputs.confirmPassword}
+              value={inputs.confirmPassword} // Bind the input value to the state
               onChange={(event) =>
                 setInputs({
                   ...inputs,
-                  confirmPassword: event.target.value,
+                  confirmPassword: event.target.value, // Update the confirm password state on input change
                 })
               }
             />
           </div>
+          {/* Gender selection */}
           <GenderCheckbox
-            selectedGender={inputs.gender}
-            onCheckboxChange={handleCheckboxChange}
+            selectedGender={inputs.gender} // Pass the selected gender
+            onCheckboxChange={handleCheckboxChange} // Handle gender selection change
           />
+          {/* Link to the login page */}
           <Link
             to="/login"
             className="block mt-2 text-sm text-center text-blue-400 hover:underline"
           >
             Already have an account?
           </Link>
+          {/* Submit button */}
           <div>
             <Button
               type="submit"
               className="w-full px-4 py-2 mt-4 text-white rounded-md focus:outline-none"
               color="blue"
-              disabled={loading}
+              disabled={loading} // Disable the button while loading
             >
               {loading ? (
                 <div className="flex items-center justify-center">
+                  {/* Spinner for loading state */}
                   <Spinner
                     className="mr-2"
                     size="sm"
@@ -128,7 +147,7 @@ const SignUp = () => {
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  <MdOutlineLogout className="w-6 h-6" />
+                  <MdOutlineLogout className="w-6 h-6" /> {/* Signup icon */}
                   <span>Sign Up</span>
                 </div>
               )}
