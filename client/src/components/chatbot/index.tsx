@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { FaMessage } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
 import ChatbotIcon from "./ChatbotIcon";
 import ChatForm from "./ChatForm";
@@ -8,6 +9,7 @@ const Chatbot = () => {
   const [chatHistory, setChatHistory] = useState<
     { role: string; text: string }[]
   >([]);
+  const [showChatbot, setShowChatbot] = useState(false);
   const chatBodyRef = useRef<HTMLDivElement | null>(null);
 
   const generateBotResponse = async (history: any[]) => {
@@ -58,15 +60,32 @@ const Chatbot = () => {
   }, [chatHistory]);
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-gradient-to-b from-blue-100 to-blue-300">
-      <div className="relative overflow-hidden bg-white rounded-lg shadow-2xl w-96">
+    <div className="flex items-center justify-center w-full bg-gradient-to-b from-blue-100 to-blue-300">
+      <button
+        className="fixed z-50 flex items-center justify-center w-12 h-12 p-2 text-white transition duration-200 bg-[#3b7bdc] rounded-full bottom-4 right-4 hover:bg-[#2051c3]"
+        onClick={() => setShowChatbot((prev) => !prev)}
+      >
+        <span className="absolute w-6 h-6 rounded-full top-4 right-2">
+          <FaMessage />
+        </span>
+      </button>
+      <div
+        className={`fixed overflow-hidden bg-white rounded-lg shadow-2xl opacity-0 pointer-events-none w-96 bottom-20 right-6 transition  ease-in-out duration-100 origin-bottom-right} ${
+          showChatbot
+            ? "opacity-100 pointer-events-auto bottom-20 right-6 fixed"
+            : ""
+        }`}
+      >
         {/* Chatbot header */}
-        <div className="flex items-center justify-between px-6 py-4 bg-purple-700">
+        <div className="flex items-center justify-between px-6 py-4 bg-[#3b7bdc]">
           <div className="flex items-center gap-2">
             <ChatbotIcon />
             <h2 className="text-lg font-semibold text-white">Chatbot</h2>
           </div>
-          <button className="p-2 text-2xl text-white transition duration-200 rounded-full hover:bg-purple-800">
+          <button
+            className="p-2 text-2xl text-white transition duration-200 rounded-full hover:bg-[#2051c3]"
+            onClick={() => setShowChatbot((prev) => !prev)}
+          >
             <IoIosArrowDown size={25} />
           </button>
         </div>
@@ -82,7 +101,6 @@ const Chatbot = () => {
               Hi! I'm a chatbot. How can I help you today?
             </p>
           </div>
-
           {chatHistory.map((chat, index) => (
             <ChatMessage key={index} chat={chat} />
           ))}

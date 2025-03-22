@@ -45,7 +45,7 @@ const ChatForm: React.FC<ChatFormProps> = ({
   return (
     <form
       action="#"
-      className="flex items-center bg-white border border-gray-300 rounded-full shadow-sm focus-within:border-purple-700"
+      className="flex items-center bg-white border border-gray-300 rounded-full shadow-sm focus-within:border-[#3b7bdc]"
       onSubmit={handleFormSubmit}
     >
       <input
@@ -57,7 +57,7 @@ const ChatForm: React.FC<ChatFormProps> = ({
       />
       <button
         type="submit"
-        className="p-2 mr-2 text-white bg-purple-700 rounded-full hover:bg-purple-600"
+        className="p-2 mr-2 text-white bg-[#3b7bdc] rounded-full hover:bg-[#2051c3]"
       >
         <IoIosArrowRoundUp size={25} />
       </button>

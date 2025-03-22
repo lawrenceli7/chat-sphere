@@ -15,7 +15,7 @@ const ChatMessage = ({ chat }: { chat: Chat }) => {
       {chat.role === "model" && <ChatbotIcon />}
       <p
         className={`max-w-xs p-3 text-sm rounded-lg ${
-          chat.role === "model" ? "bg-purple-100" : "bg-purple-700 text-white"
+          chat.role === "model" ? "bg-purple-100" : "bg-[#3b7bdc] text-white"
         }`}
       >
         {chat.text}
