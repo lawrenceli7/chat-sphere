@@ -1,5 +1,6 @@
 import { FaRobot } from "react-icons/fa";
 
+// Functional component that renders a chatbot icon
 const ChatbotIcon = () => {
   return (
     <FaRobot
