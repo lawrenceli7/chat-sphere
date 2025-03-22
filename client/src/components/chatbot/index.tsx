@@ -1,14 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { FaMessage } from "react-icons/fa6";
 import { IoIosArrowDown } from "react-icons/io";
+import { chatInfo } from "../../utils/chatInfo";
 import ChatbotIcon from "./ChatbotIcon";
 import ChatForm from "./ChatForm";
 import ChatMessage from "./ChatMessage";
 
 const Chatbot = () => {
   const [chatHistory, setChatHistory] = useState<
-    { role: string; text: string }[]
-  >([]);
+    { role: string; text: string; hideInChat?: boolean }[]
+  >([
+    {
+      hideInChat: true,
+      role: "model",
+      text: chatInfo,
+    },
+  ]);
   const [showChatbot, setShowChatbot] = useState(false);
   const chatBodyRef = useRef<HTMLDivElement | null>(null);
 
