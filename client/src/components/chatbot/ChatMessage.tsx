@@ -3,6 +3,7 @@ import ChatbotIcon from "./ChatbotIcon";
 interface Chat {
   role: string;
   text: string;
+  isError?: boolean;
 }
 
 const ChatMessage = ({ chat }: { chat: Chat }) => {
@@ -10,7 +11,7 @@ const ChatMessage = ({ chat }: { chat: Chat }) => {
     <div
       className={`flex items-center ${
         chat.role === "model" ? "justify-start" : "justify-end"
-      }`}
+      } ${chat.isError ? "error" : ""}`}
     >
       {chat.role === "model" && <ChatbotIcon />}
       <p

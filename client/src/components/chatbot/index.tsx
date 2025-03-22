@@ -13,10 +13,10 @@ const Chatbot = () => {
   const chatBodyRef = useRef<HTMLDivElement | null>(null);
 
   const generateBotResponse = async (history: any[]) => {
-    const updateHistory = (text: string) => {
+    const updateHistory = (text: string, isError = false) => {
       setChatHistory((prev) => [
         ...prev.filter((msg) => msg.text !== "Thinking..."),
-        { role: "model", text },
+        { role: "model", text, isError },
       ]);
     };
 
@@ -48,7 +48,7 @@ const Chatbot = () => {
 
       updateHistory(apiResponseText);
     } catch (error: any) {
-      console.log(error);
+      updateHistory(error.message, true);
     }
   };
 
