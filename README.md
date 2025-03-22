@@ -1,6 +1,6 @@
 # ChatSphere
 
-ChatSphere is a full-stack, real-time communication messaging app built with the PERN stack (PostgreSQL, Express.js, React.js, Node.js).
+ChatSphere is an AI-powered, full-stack, real-time communication messaging app built with the PERN stack (PostgreSQL, Express.js, React.js, Node.js) with chatbot assistance.
 
 ## Installation Guide
 
@@ -21,7 +21,15 @@ Now run `npx prisma generate` and `npx prisma db push` to generate prisma and ap
 Then, run `npm run dev` to start the Express backend server.
 
 ### Client
-In another new terminal window, navigate to the `client` folder, and run `npm install` to install all dependencies. Then, run `npm run dev` to start the development server.
+In another new terminal window, navigate to the `client` folder, and run `npm install` to install all dependencies. 
+
+Create a `.env` file and add the following lines:
+
+```
+VITE_API_URL="your-google-gemini-key"
+```
+
+Then, run `npm run dev` to start the development server.
 
 ## Features
 
@@ -32,12 +40,15 @@ In another new terminal window, navigate to the `client` folder, and run `npm in
 3. **Intuitive User Interface:**  A minimalist and user-friendly design, promoting an uncluttered environment that enhances focus and productivity during interactions.
    
 4. **Persistent Chat History:**   Conversation histories are securely stored in the database and automatically retrieved, enabling seamless conversation continuity.
+   
+6. **Chatbot Assistance:** A personal AI assistant to help you if you have trouble with anything on the app.
 
 ## Technologies & Frameworks Used
 - **Frontend:** React.js, Typescript, TailwindCSS, Vite, DaisyUI, Flowbite React
 - **Backend:** Express.js, Typescript, Node.js, Prisma
 - **Authentication:** JSON Web Token (JWT) and bcrypt for password encryption.
 - **Database:** PostgreSQL
+- **API:** Google Gemini
 - **Hosting:** Frontend and Backend deployed on Render
 
 ## Directory Structure
